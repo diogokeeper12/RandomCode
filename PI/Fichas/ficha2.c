@@ -28,17 +28,26 @@ float multInt2 (int n, float m){
 	}
 	}
 
+int fib1 (int n){
+	if(n<2) return 1;
+	else return fib1(n-1) + fib1(n-2);
+}
+
 
 //main function
 int main(){
 	int a;
 	float f1,f2,f;
+	int n;
+	printf("Introduza um número para a sequencia de fibonacci: ");
+	scanf("%d",&n);
 	printf("Introduza dois números: ");
 	scanf("%d", &a);scanf("%f",&f);
 	f1 = multInt1(a,f);
 	f2 = multInt2(a,f);
+	int res = fib1(n);
 	printf("O resultado de multInt1 é: %f\n",f1);
 	printf("O resultado de multInt2 é: %f\n",f2);
-
+	printf("O resultado da sequencia de fibonacci é: %d\n", res);	
 	return 0;
 }
