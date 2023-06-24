@@ -8,23 +8,25 @@ por um aluno. A função deve devolver a lista com os alunos que não ficaram
 alocados a nenhum projecto, ordenada por ordem de número de aluno.
 
 """
-
-def f(l1,l2):
-    for x in l1:
-        if x not in l2:
-            return x
-
 def aloca(prefs):
-    res = []
-    aux = []
-    sorted_keys = sorted(prefs.keys())
-    
-    for key in sorted_keys:
-        prefs.update({key:f(prefs.get(key), aux)})
-        aux.append(prefs.get(key))
+    proj_escolhidos = []
+    alunos_nalocados = []
+    alunos_sorted = sorted(prefs.keys())
+   
+    for aluno in alunos_sorted:
+        projetos = prefs[aluno]
+        alocado = False
+        for projeto in projetos:
+            if projeto not in proj_escolhidos:
+                proj_escolhidos.append(projeto)
+                alocado = True
+                break
         
-    for i in prefs:
-        if prefs[i] == None:
-            res.append(i)
+        if not alocado:
+            alunos_nalocados.append(aluno)
+
+    alunos_nao_alocados_sorted = sorted(alunos_nalocados)
+    return alunos_nao_alocados_sorted
+
+        
     
-    return sorted(res)
